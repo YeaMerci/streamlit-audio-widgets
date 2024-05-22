@@ -66,7 +66,7 @@ class AudioWidget(AudioConverter):
             return self._safe_load(io.BytesIO(data))
         if duration > self.max_duration:
             st.error(
-                f"Oops! Length of the heartbeat audio recording "
+                f"Oops! Length of the audio recording "
                 f"must be less than {self.max_duration} seconds, "
                 f"but the length is {round(duration, 2)} seconds. "
                 f"Please try again.",
@@ -74,7 +74,7 @@ class AudioWidget(AudioConverter):
             )
         if duration < self.min_duration:
             st.error(
-                f"Oops! Length of the heartbeat audio recording "
+                f"Oops! Length of the audio recording "
                 f"must be at least {self.min_duration} seconds, "
                 f"but the length is {round(duration, 2)} seconds. "
                 f"Please try again.",
@@ -88,7 +88,7 @@ class AudioWidget(AudioConverter):
 
     def load_audio(self) -> Union[bytes, None]:
         data = st.file_uploader(
-            label=f"Upload an audio file of your heartbeat "
+            label=f"Upload an audio file "
                   f"that more or equal {self.min_duration} and "
                   f"less or equal {self.max_duration} seconds.",
             type=self.available_formats
